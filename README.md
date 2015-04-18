@@ -12,4 +12,4 @@
 
 #Team
 
-*[《聚沙成塔——建设分享型团队》](https://github.com/hxfirefox/blog/blob/master/team/%E8%81%9A%E6%B2%99%E6%88%90%E5%A1%94%E2%80%94%E2%80%94%E5%BB%BA%E8%AE%BE%E5%88%86%E4%BA%AB%E5%9E%8B%E5%9B%A2%E9%98%9F.md)
+* [《聚沙成塔——建设分享型团队》](https://github.com/hxfirefox/blog/blob/master/team/%E8%81%9A%E6%B2%99%E6%88%90%E5%A1%94%E2%80%94%E2%80%94%E5%BB%BA%E8%AE%BE%E5%88%86%E4%BA%AB%E5%9E%8B%E5%9B%A2%E9%98%9F.md)
