@@ -37,3 +37,4 @@ public String[] split(String regex) {
   return split(regex, 0);
 }
 ```
+既然入参是正则表达式，那就应该正则表达式去进行解答，在正则表达式中"|"代表的含义是或
