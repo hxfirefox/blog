@@ -37,4 +37,15 @@ public String[] split(String regex) {
   return split(regex, 0);
 }
 ```
-既然入参是正则表达式，那就应该正则表达式去进行解答，在正则表达式中"|"代表的含义是或
+既然入参是正则表达式，那就应该正则表达式去进行解答，在正则表达式中"|"代表的含义是或，因此之前的"//|"应当理解成为匹配字符中存在"//"或空字符，并按匹配进行分割。当按照空字符进行分割是，则得到的就是空字符与"1"了，并且将"//|"修改为"|"也无法纠正错误，仍然是按空字符进行分割。这里同事犯了两个错误：
+
+- 错用了转义字符，应当使用"\"而不是"/"
+- 误解了split方法的入参，没有意识到这是一个正则表达式
+
+所以想要获得正确的结果，可以使用以下几种写法
+```java
+String[] splitStrs1 = targetStr.split("\\|");
+String[] splitStrs2 = targetStr.split("[|]");
+String[] splitStrs3 = targetStr.split(Pattern.quote("|"));
+```
+那么为何Guava Splitter能够获得正确的结果呢？
