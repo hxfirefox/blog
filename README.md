@@ -22,3 +22,4 @@
 #Java
 
 * [《String split方法与Guava Splitter用法区别》](https://github.com/hxfirefox/blog/blob/master/java/String%20spilt%E4%B8%8EGuava%20Splitter%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB.md)
+* [《从现实产品生产理解创建型设计模式》](https://github.com/hxfirefox/blog/blob/master/java/%E4%BB%8E%E7%8E%B0%E5%AE%9E%E4%BA%A7%E5%93%81%E7%94%9F%E4%BA%A7%E7%90%86%E8%A7%A3%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md)
