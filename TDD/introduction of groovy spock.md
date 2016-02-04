@@ -47,9 +47,7 @@ public class UserService {
   }
 }
 ```
-Nothing too complex to mention here. The class that we’re going to put under test is the service. You can see that the service is dependant on a UserDao, which is passed into the constructor. This is a good design practice because you’re stating that in order to have a UserService, it must be constructed with a UserDao. This also becomes useful later when using dependency injection frameworks like Spring so you can mark them both as Components and Autowire the constructor arguments in, but alas.
-
-针对UserService编写测试
+采用Groovy/Spock针对UserService编写测试
 
 ```
 class UserServiceTest extends Specification {
