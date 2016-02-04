@@ -2,6 +2,7 @@ Groovy/Spock 测试导论
 =====================
 
 >原文 http://java.dzone.com/articles/intro-so-groovyspock-testing
+
 >翻译 hxfirefox
 
 测试对于软件开发者而言至关重要，不过总会有人说：“写代码是我的事，测试那是QA的工作”，这样的想法真是弱爆了。测试驱动编码已经被证明可以有效地帮助开发者提升代码质量。
@@ -21,7 +22,7 @@ public class User {
     // Accessors omitted
 }
 ```
-接下来是DAO接口:
+接下来是DAO接口：
 
 ```
 public interface UserDao {
@@ -30,7 +31,8 @@ public interface UserDao {
 
 }
 ```
-And finally the service:
+最后是service类：
+
 ```
 public class UserService {
 
@@ -47,31 +49,34 @@ public class UserService {
 ```
 Nothing too complex to mention here. The class that we’re going to put under test is the service. You can see that the service is dependant on a UserDao, which is passed into the constructor. This is a good design practice because you’re stating that in order to have a UserService, it must be constructed with a UserDao. This also becomes useful later when using dependency injection frameworks like Spring so you can mark them both as Components and Autowire the constructor arguments in, but alas.
 
-Lets go ahead and create a test class for the service (command+shift+t if using IntelliJ on a mac).
+针对UserService编写测试
 
+```
 class UserServiceTest extends Specification {
 
     UserService service
     UserDao dao = Mock(UserDao)
 
     def setup(){
-  service = new UserService(dao)
+      service = new UserService(dao)
     }
 
     def "it gets a user by id"(){
-  given:
-  def id = 1
+      given:
+      def id = 1
 
-  when:
-  def result = service.findUser(id)
+      when:
+      def result = service.findUser(id)
 
-  then:
-  1 * dao.get(id) >> new User(id:id, name:"James", age:27)
-  result.id == 1
-  result.name == "James"
-  result.age == 27
+      then:
+      1 * dao.get(id) >> new User(id:id, name:"James", age:27)
+      result.id == 1
+      result.name == "James"
+      result.age == 27
     }
 }
+```
+
 Here we go, right in at the deep end, let me explain what is going on here. Firstly, we’re using groovy, so although it looks like Java (I suppose it is in some respects as it compiles down to Java bytecode anyway) the syntax is a bit lighter, such as no semi-colons to terminate statements, no need for public accessor as everything is public by default, Strings for method names. If you want to learn more about groovy, check out their documentation  here .
 
 As you can see, the test class extends from spock.lang.Specification, this is a Spock base class and allows us to use the given, when and then blocks in our test.
