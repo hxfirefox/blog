@@ -92,25 +92,24 @@ Spock是一个BDD测试框架，因此对于Spock中涉及的given，when，then
 ```
 该行表示了对于mock对象dao的期望值，即期望调用dao.get()方法1次，而“>>”是spock的特色，表示“then return”含义。因此该句翻译过来的意思是：期望调用1次dao.get()方法，当执行该方法后，请返回一个新的User对象。
 
-You can also see that I’m using named parameters in the constructor of the User object, this is another neat little feature of groovy.
+此外在构造方法中使用具名参数也是groovy的另一特点。Then中剩余的代码对result对象进行检查。
 
-The rest of the then block are just assertions on the result object, not really required here as we’re doing a straight passthrough on the dao, but gives an insight as to what you’d normally want to do in more complex examples.
+由此测试代码驱动产生的产品代码非常简单，如下所示：
 
-The implementation.
-If you run the test, it’ll fail, as we haven’t implemented the service class, so lets go ahead and do that right now, its quite simple, just update the service class to the following:
-
+```
 public class UserService {
 
-  private UserDao userDao;
-
-  public UserService(UserDao userDao) {
-    this.userDao = userDao;
-  }
-
-  public User findUser(int id){
-    return userDao.get(id);
-  }
+    private UserDao userDao;
+    
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
+    }
+    
+    public User findUser(int id){
+        return userDao.get(id);
+    }
 }
+```
 Run the test again, it should pass this time.
 
 Stepping it up
