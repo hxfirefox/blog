@@ -192,18 +192,20 @@ public void createUser(User user){
 
 **提示**
 
-- 最重要也是最容易被遗忘的提示，阅读spock文档Read the  spock documentation!
+- 最重要也是最容易被遗忘的提示，阅读spock文档！
 - 可以命名spock块，例如将given命名为“Some variables”，有助于开发者在测试代码中更加清楚的表达含义
-You can use _ * mock.method() when you don’t care how many times a mock is invoked.
-You can use underscores to wildcard methods and classes in the then block, such as 0 * mock._ to indicate you expect no other calls on the mock, or 0 * _._ to indicate no calls on anything.
-I often write the given, when and then blocks, but then I start from the when block and work outwards, sounds like an odd approach but I find it easier to work from the invocation then work out what I need (given) and then what happens(then).
-The expect block is useful for testing simpler methods that don’t require asserting on mocks.
-You can wildcard arguments in the then block if you don’t care what gets passed into mocks.
+- 当对mock对象方法调用次数不关心时，可以使用_ * mock.method()
+- 在then块中可使用下划线来通配方法及类，例如，0 * mock._ 表示期望mock对象的任何方法都未被调用，或0 * _._ 表示期望任何对象的任何方法都未被调用
+- 通常按given，when，then编写测试，但实际上从when开始编写测试会更加容易发现测试需要的given和测试的输出结果(then) 
+- expect块对于测试不需要对mock对象进行断言的简单方法更加有效
+- 当对于传递给mock对象的参数不关注时，可以使用通配符参数
 - 拥抱groovy闭包Embrace  groovy closures!  They can be you’re best friend in assertions!
-You can override setupSpec and cleanupSpec if you want things to run only once for the entire spec.
+- 当希望在整个测试类中只运行一次可以，复写setupSpec和cleanupSpec
 
 **结论**
 
 测试代码是为了协助开发者的，而不是起相反作用，groovy在这方面提供了很多快捷方式来帮助开发者写出更加优雅的测试代码。完整代码可参考https://gist.github.com/jameselsey/8096211
 
 **思考**
+
+
