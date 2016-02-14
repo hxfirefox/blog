@@ -83,15 +83,14 @@ class UserServiceTest extends Specification {
 Spock是一个BDD测试框架，因此对于Spock中涉及的given，when，then样式最简单的理解就是：
 *Given* 给定一些条件，*When* 当执行一些操作时，*Then* 将期望得到某个结果。
 
-如上述测试方法中的代码，给定id=1，
-It’s probably easier to explain my test. We’re given an id of 1, you can think of this as a variable for the test. The when block is where the test starts, this is the invocation, we’re saying that when we call findUser() on the service passing in an id, we’ll get something back and assign it to the result.
+如上述测试方法中Given，给定id=1，即测试的变量；而在When中则是被测试方法，如在上述代码中调用findUser()；Then中则是断言，即检查被测试方法的输出结果。
 
-The then block are your assertions, this is where you check the outcomes. The first line in the then block looks a little scary, but actually it’s very simple, lets dissect it.
+上述Then中的第一句语句虽然看上去可怕，但实际上却非常容易理解：
 
+```
 1 * dao.get(id) >> new User(id:id, name:"James", age:27)
-This line is setting an expectation on the mocked dao. We’re saying that we expect 1 (and only 1) invocation on the dao.get() method, that invocation must be passed id (which we defined as 1 earlier). Still with me? Good, we’re half way.
-
-The double chevron “>>” is a spock feature, it means “then return”. So really this line reads as “we expect 1 hit on the mocked dao get(), and when we do, return a new User object”
+```
+该行表示了对于mock对象dao的期望值，即期望调用dao.get()方法1次，而“>>”是spock的特色，表示“then return”含义。因此该句翻译过来的意思是：期望调用1次dao.get()方法，当执行该方法后，请返回一个新的User对象。
 
 You can also see that I’m using named parameters in the constructor of the User object, this is another neat little feature of groovy.
 
