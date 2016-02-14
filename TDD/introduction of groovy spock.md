@@ -74,15 +74,11 @@ class UserServiceTest extends Specification {
     }
 }
 ```
-上述测试代码中，首先我们使用了groovy，这是一种非常类似Java的语言，但是它的语法更加轻，例如它不用像Java语言那样，在每句结尾加上分号；它也不需要使用public修饰符，因为默认修饰符就是public的。
+上述测试代码中，首先我们使用了groovy，这是一种非常类似Java的语言，但是它的语法更加轻，例如它不用像Java语言那样，在每句结尾加上分号；它也不需要使用public修饰符，因为默认修饰符就是public的。上述测试类继承自spock.lang.Specification，这是Spock基类，继承该基类后就可以使用given，when，then等代码块。
 
-上述测试类继承自spock.lang.Specification，这是Spock基类，继承该基类后就可以使用given，when，then等代码块。
+在Spock中创建mock对象非常容易，只需要使用Mock(Class)这样的语句即可。如上所述，mock后的DAO对象被传入userService中。Setup方法会在每个测试方法运行前被执行。Groovy的一个显著特点是可以使用字符串文本来命名方法，将这个特点应用在测试方法上就能使得测试方法可以更加容易被阅读和理解，如上述代码所示。
 
-在Spock中创建mock对象非常容易，只需要使用Mock(Class)这样的语句即可。如上所述，mock后的DAO对象被传入userService中。Setup方法会在每个测试方法运行前被执行。
-
-A great feature of groovy is that you can use String literals to name your methods, this makes tests much easier to read and work out what it is actually testing rather than naming them as “public void testItGetsAUserById()”
-
-Given, when, then
+*Given, when, then*
 Spock is a  behaviour driven development  (BDD) testing framework, which is where it gets the given, when and then patterns from (amongst others). The easiest way I can explain it as follows:
 
 Given some parts, when you do something, then you expect certain things to happen.
