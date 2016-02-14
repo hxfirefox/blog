@@ -90,9 +90,7 @@ Spock是一个BDD测试框架，因此对于Spock中涉及的given，when，then
 ```
 1 * dao.get(id) >> new User(id:id, name:"James", age:27)
 ```
-该行表示了对于mock对象dao的期望值，即期望调用dao.get()方法1次，而“>>”是spock的特色，表示“then return”含义。因此该句翻译过来的意思是：期望调用1次dao.get()方法，当执行该方法后，请返回一个新的User对象。
-
-此外在构造方法中使用具名参数也是groovy的另一特点。Then中剩余的代码对result对象进行检查。
+该行表示了对于mock对象dao的期望值，即期望调用dao.get()方法1次，而“>>”是spock的特色，表示“then return”含义。因此该句翻译过来的意思是：期望调用1次dao.get()方法，当执行该方法后，请返回一个新的User对象。此外在构造方法中使用具名参数也是groovy的另一特点。Then中剩余的代码对result对象进行检查。
 
 由此测试代码驱动产生的产品代码非常简单，如下所示：
 
@@ -110,11 +108,10 @@ public class UserService {
     }
 }
 ```
-Run the test again, it should pass this time.
 
-Stepping it up
-That was a reasonably simple example, lets look at creating some users. Add the following into the UserService:
+接下来实现创建用户功能，在UserService中添加如下代码：
 
+```
 public void createUser(User user){
         // check name
 
@@ -122,38 +119,41 @@ public void createUser(User user){
 
         // if !exists, create user
     }
-Then add these methods into the UserDao
+```
+在UserDao中添加如下方法：
 
+```
 public User findByName(String name);
-    public void createUser(User user);
-Then start with this test
+public void createUser(User user);
+```
+相应的测试方法如下：
 
+```
 def "it saves a new user"(){
-  given:
-  def user = new User(id: 1, name: 'James', age:27)
+    given:
+        def user = new User(id: 1, name: 'James', age:27)
+    
+    when:
+        service.createUser(user)
+    
+    then:
+        1 * dao.findByName(user.name) >> null
+    
+    then:
+        1 * dao.createUser(user)
+}
+```
+在上述代码中出现了两处Then，这是因为当所有断言放在一个then块中，Spock会认为这些断言是同时发生的。如果期望断言按顺序执行，则需要将断言分割到多个then块中，spock会按顺序执行断言。如上述所示，首先需要判断用户是否存在，然后再去创建用户。产品代码实现如下：
 
-  when:
-  service.createUser(user)
-
-  then:
-  1 * dao.findByName(user.name) >> null
-
-  then:
-  1 * dao.createUser(user)
-    }
-This time, we’re testing the createUser() method on the service, you’ll notice that there is nothing returned this time.
-
-You may be asking “why are there 2 then blocks?”, if you group everything into a single then block, Spock just asserts that they all happen, it doesn’t care about ordering. If you want ordering on assertions then you need to split into separate then blocks, spock then asserts them in order. In our case, we want to firstly find by user name to see if it exists, THEN we want to create it.
-
-Run the test, it should fail. Implement with the following and it’ll pass
-
+```
 public void createUser(User user){
-        User existing = userDao.findByName(user.getName());
-
-        if(existing == null){
-            userDao.createUser(user);
-        }
+    User existing = userDao.findByName(user.getName());
+    
+    if(existing == null){
+        userDao.createUser(user);
     }
+}
+```
 Thats great for scenarios where the user doesn’t already exist, but what if it does? Lets write so co…NO! Test first!
 
 def "it fails to create a user because one already exists with that name"(){
