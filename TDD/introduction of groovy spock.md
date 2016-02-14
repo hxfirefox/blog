@@ -154,53 +154,56 @@ public void createUser(User user){
     }
 }
 ```
-Thats great for scenarios where the user doesn’t already exist, but what if it does? Lets write so co…NO! Test first!
 
+上述代码针对用户不存在场景，而对于用户存在的场景，测试代码如下：
+
+```
 def "it fails to create a user because one already exists with that name"(){
-  given:
-  def user = new User(id: 1, name: 'James', age:27)
+    given:
+        def user = new User(id: 1, name: 'James', age:27)
+    
+    when:
+        service.createUser(user)
+    
+    then:
+        1 * dao.findByName(user.name) >> user
+    
+    then:
+        0 * dao.createUser(user)
+    
+    then:
+        def exception = thrown(RuntimeException)
+        exception.message == "User with name ${user.name} already exists!"
+}
+```
+上述代码当调用findByName时，返回一个存在的用户，然后不调用createUser()，第三个Then块捕获方法抛出的异常。注意groovy拥有一个称之为GStrings的特征，该特征可以在引用的字符串中插入参数，如${user.name}。相应产品代码如下：
 
-  when:
-  service.createUser(user)
-
-  then:
-  1 * dao.findByName(user.name) >> user
-
-  then:
-  0 * dao.createUser(user)
-
-  then:
-  def exception = thrown(RuntimeException)
-  exception.message == "User with name ${user.name} already exists!"
-    }
-This time, when we call findByName, we want to return an existing user. Then we want 0 interactions with the createUser() mocked method.
-
-The third then block grabs hold of the thrown exception by calling thrown() and asserts the message. Note that groovy has a neat feature called GStrings that allow you to put arguments inside quoted strings.
-
-Run the test, it will fail. Implement with the following at it’ll pass.
-
+```
 public void createUser(User user){
-        User existing = userDao.findByName(user.getName());
-
-        if(existing == null){
-            userDao.createUser(user);
-        } else{
-            throw new RuntimeException(String.format("User with name %s already exists!", user.getName()));
-        }
+    User existing = userDao.findByName(user.getName());
+    
+    if(existing == null){
+        userDao.createUser(user);
+    } else{
+        throw new RuntimeException(String.format("User with name %s already exists!", user.getName()));
     }
-I’ll leave it there, that should give you a brief intro to Spock, there is far more that you can do with it, this is just a basic example.
+}
+```
 
-Snippets of wisdom
-Read the  spock documentation!
-You can name spock blocks such as given:”Some variables”, this is useful if its not entirely clear what your test is doing.
+**提示**
+
+- 最重要也是最容易被遗忘的提示，阅读spock文档Read the  spock documentation!
+- 可以命名spock块，例如将given命名为“Some variables”，有助于开发者在测试代码中更加清楚的表达含义
 You can use _ * mock.method() when you don’t care how many times a mock is invoked.
 You can use underscores to wildcard methods and classes in the then block, such as 0 * mock._ to indicate you expect no other calls on the mock, or 0 * _._ to indicate no calls on anything.
 I often write the given, when and then blocks, but then I start from the when block and work outwards, sounds like an odd approach but I find it easier to work from the invocation then work out what I need (given) and then what happens(then).
 The expect block is useful for testing simpler methods that don’t require asserting on mocks.
 You can wildcard arguments in the then block if you don’t care what gets passed into mocks.
-Embrace  groovy closures!  They can be you’re best friend in assertions!
+- 拥抱groovy闭包Embrace  groovy closures!  They can be you’re best friend in assertions!
 You can override setupSpec and cleanupSpec if you want things to run only once for the entire spec.
-Conclusion
-Having used Spock (and groovy for testing) on various work and hobby projects I must admit I’ve become quite a fan. Test code is there to be an aid to the developer, not a hinderance. I find that groovy has many shortcuts (collections API to name but a few!) that make writing test code much nicer.
 
-You can view the full Gist here https://gist.github.com/jameselsey/8096211
+**结论**
+
+测试代码是为了协助开发者的，而不是起相反作用，groovy在这方面提供了很多快捷方式来帮助开发者写出更加优雅的测试代码。完整代码可参考https://gist.github.com/jameselsey/8096211
+
+**思考**
