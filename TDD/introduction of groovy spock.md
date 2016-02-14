@@ -74,7 +74,7 @@ class UserServiceTest extends Specification {
     }
 }
 ```
-上述测试代码中，首先我们使用了groovy，这是一种非常类似Java的语言，但是它的语法更加轻，例如它不用像Java语言那样，在每句结尾加上分号；它也不需要使用public修饰符，因为默认修饰符就是public的。上述测试类继承自spock.lang.Specification，这是Spock基类，继承该基类后就可以使用given，when，then等代码块。
+上述测试代码中，首先我们使用了groovy，这是一种非常类似Java的语言，但是它的语法更加轻，例如它不用像Java语言那样，在每句结尾加上分号；它也不需要使用public修饰符，因为public是默认的。上述测试类继承自spock.lang.Specification，这是Spock基类，继承该基类后就可以使用given，when，then等代码块。
 
 在Spock中创建mock对象非常容易，只需要使用Mock(Class)这样的语句即可。如上所述，mock后的DAO对象被传入userService中。Setup方法会在每个测试方法运行前被执行。Groovy的一个显著特点是可以使用字符串文本来命名方法，将这个特点应用在测试方法上就能使得测试方法可以更加容易被阅读和理解，如上述代码所示。
 
@@ -208,4 +208,4 @@ public void createUser(User user){
 
 **思考**
 
-
+翻译这篇文章是受到了[使用 Groovy 语言替代 JUnit 来为 Java 程序编写单元测试](https://codingstyle.cn/topics/45)和[The Coding Kata: FizzBuzzWhizz in Modern Java](https://codingstyle.cn/topics/100)两篇文章的启示，在阅读完这两篇文章后，groovy给我对于测试用例编写带来的很大的冲击。
