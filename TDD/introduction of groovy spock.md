@@ -78,11 +78,12 @@ class UserServiceTest extends Specification {
 
 在Spock中创建mock对象非常容易，只需要使用Mock(Class)这样的语句即可。如上所述，mock后的DAO对象被传入userService中。Setup方法会在每个测试方法运行前被执行。Groovy的一个显著特点是可以使用字符串文本来命名方法，将这个特点应用在测试方法上就能使得测试方法可以更加容易被阅读和理解，如上述代码所示。
 
-*Given, when, then*
-Spock is a  behaviour driven development  (BDD) testing framework, which is where it gets the given, when and then patterns from (amongst others). The easiest way I can explain it as follows:
+**Given, when, then**
 
-Given some parts, when you do something, then you expect certain things to happen.
+Spock是一个BDD测试框架，因此对于Spock中涉及的given，when，then样式最简单的理解就是：
+*Given* 给定一些条件，*When* 当执行一些操作时，*Then* 将期望得到某个结果。
 
+如上述测试方法中的代码，给定id=1，
 It’s probably easier to explain my test. We’re given an id of 1, you can think of this as a variable for the test. The when block is where the test starts, this is the invocation, we’re saying that when we call findUser() on the service passing in an id, we’ll get something back and assign it to the result.
 
 The then block are your assertions, this is where you check the outcomes. The first line in the then block looks a little scary, but actually it’s very simple, lets dissect it.
