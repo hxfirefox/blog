@@ -36,15 +36,15 @@ public interface UserDao {
 ```
 public class UserService {
 
-  private UserDao userDao;
-
-  public UserService(UserDao userDao) {
+    private UserDao userDao;
+    
+    public UserService(UserDao userDao) {
     this.userDao = userDao;
-  }
-
-  public User findUser(int id){
+    }
+    
+    public User findUser(int id){
     return null;
-  }
+    }
 }
 ```
 采用Groovy/Spock针对UserService编写测试
@@ -74,14 +74,11 @@ class UserServiceTest extends Specification {
     }
 }
 ```
+上述测试代码中，首先我们使用了groovy，这是一种非常类似Java的语言，但是它的语法更加轻，例如它不用像Java语言那样，在每句结尾加上分号；它也不需要使用public修饰符，因为默认修饰符就是public的。
 
-Here we go, right in at the deep end, let me explain what is going on here. Firstly, we’re using groovy, so although it looks like Java (I suppose it is in some respects as it compiles down to Java bytecode anyway) the syntax is a bit lighter, such as no semi-colons to terminate statements, no need for public accessor as everything is public by default, Strings for method names. If you want to learn more about groovy, check out their documentation  here .
+上述测试类继承自spock.lang.Specification，这是Spock基类，继承该基类后就可以使用given，when，then等代码块。
 
-As you can see, the test class extends from spock.lang.Specification, this is a Spock base class and allows us to use the given, when and then blocks in our test.
-
-You’ll see the subject of the test then, the service. I prefer to define this as a field and assign it in the setup, but others prefer to instantiate it in the given block of each test, I suppose this is really just a personal preference.
-
-Creating mocks with Spock is easy, just use Mock(Class). I then pass the mocked DAO dependency into the userService in the setup method. Setup runs before each test is executed( likewise, cleanup() is run after each test completes). This is an excellent pattern for testing as you can mock out all dependencies and define their behaviour, so you’re literally just testing the service class.
+在Spock中创建mock对象非常容易，只需要使用Mock(Class)这样的语句即可。如上所述，mock后的DAO对象被传入userService中。Setup方法会在每个测试方法运行前被执行。
 
 A great feature of groovy is that you can use String literals to name your methods, this makes tests much easier to read and work out what it is actually testing rather than naming them as “public void testItGetsAUserById()”
 
