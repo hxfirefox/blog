@@ -208,4 +208,4 @@ public void createUser(User user){
 
 **思考**
 
-翻译这篇文章是受到了[使用 Groovy 语言替代 JUnit 来为 Java 程序编写单元测试](https://codingstyle.cn/topics/45)和[The Coding Kata: FizzBuzzWhizz in Modern Java](https://codingstyle.cn/topics/100)两篇文章的启示。除了赞叹两篇文章中采用的测试框架的易用，也深深地被groovy所吸引，其作为DSL的特质不论是对于追求编写更好测试用例的精益开发者还是对于刚入门测试用例的新手开发者来说都是容易掌握和使用的。我们期望测试用例的目标就是能够作为产品代码的*living docs*，最佳的效果就是完全摆脱编程语言的语法束缚，成为纯粹的书写或口头表达方式，这样就能“望文生义”。
+翻译这篇文章是受到了《[使用 Groovy 语言替代 JUnit 来为 Java 程序编写单元测试](https://codingstyle.cn/topics/45)》和《[The Coding Kata: FizzBuzzWhizz in Modern Java](https://codingstyle.cn/topics/100)》两篇文章的启示。除了赞叹两篇文章中采用的测试框架的易用，也深深地被groovy所吸引，其作为DSL的特质不论是对于追求编写更好测试用例的精益开发者还是对于刚入门测试用例的新手开发者来说都是容易掌握和使用的。我们期望测试用例的目标就是能够作为产品代码的*living docs*，最佳的效果就是完全摆脱编程语言的语法束缚，成为纯粹的书写或口头表达方式，这样就能“望文生义”。
