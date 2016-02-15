@@ -5,7 +5,7 @@ Groovy/Spock 测试导论
 
 >翻译 hxfirefox
 
-测试对于软件开发者而言至关重要，不过总会有人说：“写代码是我的事，测试那是QA的工作”，这样的想法真是弱爆了。测试驱动编码已经被证明可以有效地帮助开发者提升代码质量。
+测试对于软件开发者而言至关重要，不过总会有人说：“写代码是我的事，测试那是QA的工作”，这样的想法真是弱爆了，因为大量的业界实践已经证明测试驱动编码可以有效地帮助开发者提升代码质量。
 
 大多数遵循TDD的Java开发者均会使用mockito或powermock，但mockito和powermock均包含了许多样本代码，导致测试代码变得冗长而难以维护。在测试中引入Groovy/Spock后，我完全被它们吸引，并转向使用Groovy/Spock来替代原有的测试框架。
 
@@ -81,7 +81,7 @@ class UserServiceTest extends Specification {
 **Given, when, then**
 
 Spock是一个BDD测试框架，因此对于Spock中涉及的given，when，then样式最简单的理解就是：
-*Given* 给定一些条件，*When* 当执行一些操作时，*Then* 将期望得到某个结果。
+*Given* 给定一些条件，*When* 当执行一些操作时，*Then* 期望得到某个结果。
 
 如上述测试方法中Given，给定id=1，即测试的变量；而在When中则是被测试方法，如在上述代码中调用findUser()；Then中则是断言，即检查被测试方法的输出结果。
 
@@ -200,7 +200,7 @@ public void createUser(User user){
 - expect块对于测试不需要对mock对象进行断言的简单方法更加有效
 - 当对于传递给mock对象的参数不关注时，可以使用通配符参数
 - 拥抱groovy闭包Embrace  groovy closures!  They can be you’re best friend in assertions!
-- 当希望在整个测试类中只运行一次可以，复写setupSpec和cleanupSpec
+- 当希望在整个测试类中只运行一次，可以复写setupSpec和cleanupSpec
 
 **结论**
 
@@ -208,4 +208,4 @@ public void createUser(User user){
 
 **思考**
 
-翻译这篇文章是受到了《[使用 Groovy 语言替代 JUnit 来为 Java 程序编写单元测试](https://codingstyle.cn/topics/45)》和《[The Coding Kata: FizzBuzzWhizz in Modern Java](https://codingstyle.cn/topics/100)》两篇文章的启示。除了赞叹两篇文章中采用的测试框架的易用，也深深地被groovy所吸引，其作为DSL的特质不论是对于追求编写更好测试用例的精益开发者还是对于刚入门测试用例的新手开发者来说都是容易掌握和使用的。我们期望测试用例的目标就是能够作为产品代码的 ***living docs***，最佳的效果就是完全摆脱编程语言的语法束缚，成为纯粹的书写或口头表达方式，这样就能“望文生义”。从这个意义上讲groovy在这方面确实对于Java测试用例编写起到了促进作用，再加上groovy与Java的无缝融合，及自身拥有的重点语法特性，在团队中推广groovy替代JUnit的唯一阻力就剩下大多数开发者是否愿意学习一门新的编程语言。
+翻译这篇文章是受到了《[使用 Groovy 语言替代 JUnit 来为 Java 程序编写单元测试](https://codingstyle.cn/topics/45)》和《[The Coding Kata: FizzBuzzWhizz in Modern Java](https://codingstyle.cn/topics/100)》两篇文章的启示。除了赞叹两篇文章中采用的测试框架的易用，也深深地被groovy所吸引，其作为DSL的特质不论是对于追求编写更好测试用例的精益开发者还是对于刚入门测试用例的新手开发者来说都是容易掌握和使用的。我们期望测试用例的目标就是能够作为产品代码的 ***living docs***，最佳的效果就是完全摆脱编程语言的语法束缚，成为纯粹的书写或口头表达方式，这样就能“望文生义”。Groovy在这方面确实对于Java测试用例编写起到了促进作用，再加上groovy与Java的无缝融合，及自身拥有的语法特性，在团队中推广groovy替代传统Java测试框架的唯一阻力就剩下大多数开发者是否愿意学习一门新的编程语言。
