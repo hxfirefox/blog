@@ -1,6 +1,10 @@
 Spock 1.0 with Groovy 2.4 Configuration Comparison in Maven and Gradle
 ======================================================================
 
+>原文 https://dzone.com/articles/spock-10-groovy-24
+>
+>翻译 hxfirefox
+
 Spock 1.0 has been finally released. About new features and enhancements I already wrote two blog posts. One of the recent changes was a separation on artifacts designed for specific Groovy versions: 2.0, 2.2, 2.3 and 2.4 to minimize a chance to come across a binary incompatibility in runtime (in the past there were only versions for Groovy 1.8 and 2.0+). That was done suddenly and based on the messages on the mailing list it confused some people. After being twice asked to help properly configure two projects I decided to write a short post presenting how to configure Spock 1.0 with Groovy 2.4 in Maven and Gradle. It is also a great place to compare how much work is required to do it in those two very popular build systems.
 
 #Maven
