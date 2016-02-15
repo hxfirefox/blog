@@ -63,6 +63,7 @@ Also dependencies have to be added:
 ```
 It is very important to take a proper version of Spock. For Groovy 2.4 version 1.0-groovy-2.4 is required. For Groovy 2.3 version 1.0-groovy-2.3. In case of mistake Spock protests with a clear error message:
 
+```
 Could not instantiate global transform class
 org.spockframework.compiler.SpockTransform specified at
 jar:file:/home/foo/.../spock-core-1.0-groovy-2.3.jar!/META-INF/services/org.codehaus.groovy.transform.ASTTransformation
@@ -71,7 +72,7 @@ org.spockframework.util.IncompatibleGroovyVersionException:
 The Spock compiler plugin cannot execute because Spock 1.0.0-groovy-2.3 is
 not compatible with Groovy 2.4.0. For more information, see
 http://versioninfo.spockframework.org
-
+```
 Together with other mandatory pom.xml elements the file size increased to over 50 lines of XML. Quite much just for Groovy and Spock. Let’s see how complicated it is in Gradle.
 
 #Gradle
