@@ -1,4 +1,4 @@
-Spock 1.0 with Groovy 2.4 Configuration Comparison in Maven and Gradle
+如何在Maven和Gradle中配置使用Groovy 2.4与Spock 1.0
 ======================================================================
 
 >原文 https://dzone.com/articles/spock-10-groovy-24
@@ -9,9 +9,9 @@ Spock 1.0 has been finally released. About new features and enhancements I alrea
 
 #Maven
 
-Maven does not natively support other JVM languages (like Groovy or Scala). To use it in the Maven project it is required to use a third party plugin. For Groovy the best option seems to be GMavenPlus (a rewrite of no longer maintained GMaven plugin). An alternative is a plugin which allows to use Groovy-Eclipse compiler with Maven, but it is not using official groovyc and in the past there were problems with being up-to-date with the new releases/features of Groovy.
+Maven无法天然支持除Java外的其他JVM语言，例如Groovy或Scala。想要在Maven中使用Groovy/Spock，需要引入第三方插件。对于Groovy，最佳选择是GMavenPlus，另一个选择是使用Groovy-Eclipse编译器的插件，不过这种插件不使用官方groovyc，并且当Groovy发布新特性时会存在问题。
 
-Sample configuration of GMavenPlus plugin could look like:
+使用GMavenPlus插件的配置范例如下：
 
 ```
 <plugin>
@@ -107,7 +107,7 @@ The minimal working project with Spock 1.0 and Groovy 2.4 configured in Maven an
 
 Graphical comparison of Spock and Groovy configuration in Maven and Gradle
 
-[img](https://solidsoft.files.wordpress.com/2015/03/spock-groovy-maven-gradle.png)
+![img](https://solidsoft.files.wordpress.com/2015/03/spock-groovy-maven-gradle.png)
 
 **Note 1.** I haven’t been using Maven in my project for over 2 years (I prefer Gradle), so if there is a better/easier way to configure Groovy and Spock with Maven just let me know in the comments.
 
