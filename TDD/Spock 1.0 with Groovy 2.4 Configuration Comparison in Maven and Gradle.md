@@ -78,13 +78,15 @@ Together with other mandatory pom.xml elements the file size increased to over 5
 
 Gradle has built-in support for Groovy and Scala. Without further ado Groovy plugin just has to be applied.
 
+```
 apply plugin: 'groovy'
-
+```
 Next the dependencies has to be added:
 
+```
 compile 'org.codehaus.groovy:groovy-all:2.4.1'
 testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
-
+```
 and the information where Gradle should look for them:
 
 ```
@@ -104,7 +106,7 @@ The minimal working project with Spock 1.0 and Groovy 2.4 configured in Maven an
 
 Graphical comparison of Spock and Groovy configuration in Maven and Gradle
 
-
+[img](https://solidsoft.files.wordpress.com/2015/03/spock-groovy-maven-gradle.png)
 
 **Note 1.** I haven’t been using Maven in my project for over 2 years (I prefer Gradle), so if there is a better/easier way to configure Groovy and Spock with Maven just let me know in the comments.
 
