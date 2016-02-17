@@ -28,7 +28,7 @@ Maven无法天然支持除Java外的其他JVM语言，例如Groovy或Scala。想
     </executions>
 </plugin>
 ```
-As we want to write tests in Spock which recommends to name files with Spec suffix (from specification) in addition it is required to tell Surefire to look for tests also in those files:
+使用Spock编写的测试文件建议用Spec后缀，此外还需通知Surefire需要查询的测试文件，如下所示：
 
 ```
 <plugin>
@@ -42,9 +42,7 @@ As we want to write tests in Spock which recommends to name files with Spec suff
     </configuration>
 </plugin>
 ```
-Please notice that it is needed to include **/*Spec.java not **/*Spec.groovy to make it work.
-
-Also dependencies have to be added:
+注意此处需要包括**/*Spec.java而不是**/*Spec.groovy，此外在依赖中需要增加如下：
 
 ```
 <dependencies>
@@ -61,7 +59,7 @@ Also dependencies have to be added:
     </dependency>
 </dependencies>
 ```
-It is very important to take a proper version of Spock. For Groovy 2.4 version 1.0-groovy-2.4 is required. For Groovy 2.3 version 1.0-groovy-2.3. In case of mistake Spock protests with a clear error message:
+使用合适的Spock版本非常重要，对于Groovy 2.4，应该选择版本1.0-groovy-2.4的GMavenPlus；对于Groovy 2.3，则应选择1.0-groovy-2.3。一旦选错了版本，就会出现如下信息警告：
 
 ```
 Could not instantiate global transform class
@@ -73,11 +71,12 @@ The Spock compiler plugin cannot execute because Spock 1.0.0-groovy-2.3 is
 not compatible with Groovy 2.4.0. For more information, see
 http://versioninfo.spockframework.org
 ```
-Together with other mandatory pom.xml elements the file size increased to over 50 lines of XML. Quite much just for Groovy and Spock. Let’s see how complicated it is in Gradle.
+结合其他pom中的元素，上述pom就会超过50行XML，其中大部分与Groovy和Spock相关
 
 #Gradle
 
 Gradle has built-in support for Groovy and Scala. Without further ado Groovy plugin just has to be applied.
+Gradle内建支持Groovy和Scala
 
 ```
 apply plugin: 'groovy'
