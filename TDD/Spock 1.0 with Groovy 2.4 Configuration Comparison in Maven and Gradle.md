@@ -5,8 +5,6 @@
 >
 >翻译 hxfirefox
 
-Spock 1.0 has been finally released. About new features and enhancements I already wrote two blog posts. One of the recent changes was a separation on artifacts designed for specific Groovy versions: 2.0, 2.2, 2.3 and 2.4 to minimize a chance to come across a binary incompatibility in runtime (in the past there were only versions for Groovy 1.8 and 2.0+). That was done suddenly and based on the messages on the mailing list it confused some people. After being twice asked to help properly configure two projects I decided to write a short post presenting how to configure Spock 1.0 with Groovy 2.4 in Maven and Gradle. It is also a great place to compare how much work is required to do it in those two very popular build systems.
-
 #Maven
 
 Maven无法天然支持除Java外的其他JVM语言，例如Groovy或Scala。想要在Maven中使用Groovy/Spock，需要引入第三方插件。对于Groovy，最佳选择是GMavenPlus，另一个选择是使用Groovy-Eclipse编译器的插件，不过这种插件不使用官方groovyc，并且当Groovy发布新特性时会存在问题。
