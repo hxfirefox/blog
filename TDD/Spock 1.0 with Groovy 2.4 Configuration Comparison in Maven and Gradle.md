@@ -93,20 +93,10 @@ repositories {
     mavenCentral()
 }
 ```
-Together with defining package group and version it took 15 lines of code in Groovy-based DSL.
-
-Btw, in case of Gradle it is also very important to match Spock and Groovy version, e.g. Groovy 2.4.1 and Spock 1.0-groovy-2.4.
+结合定义包组和版本部分，采用基于Groovy的DSL编写的Gradle总共约为15行。对于Gradle，Spock和Groovy的版本同样很重要，例如，Groovy 2.4.1与Spock 1.0-groovy-2.4。
 
 #Summary
 
-Thanks to embedded support for Groovy and compact DSL Gradle is preferred solution to start playing with Spock (and Groovy in general). Nevertheless if you prefer Apache Maven with a help of GMavenPlus (and XML) it is also possible to build project tested with Spock.
-
-The minimal working project with Spock 1.0 and Groovy 2.4 configured in Maven and Gradle can be cloned from my GitHub.
-
-Graphical comparison of Spock and Groovy configuration in Maven and Gradle
+从上面的对比不难看出，在使用Spock时，Gradle是更加出色的解决方案。下图示出了Spock与Groovy配置在Maven和Gradle中比较：
 
 ![img](https://solidsoft.files.wordpress.com/2015/03/spock-groovy-maven-gradle.png)
-
-**Note 1.** I haven’t been using Maven in my project for over 2 years (I prefer Gradle), so if there is a better/easier way to configure Groovy and Spock with Maven just let me know in the comments.
-
-**Note 2.** The configuration examples assume that Groovy is used only for tests and the production code is written in Java. It is possible to mix Groovy and Java code together, but then the configuration is a little more complicated.
