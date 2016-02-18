@@ -75,19 +75,18 @@ http://versioninfo.spockframework.org
 
 #Gradle
 
-Gradle has built-in support for Groovy and Scala. Without further ado Groovy plugin just has to be applied.
-Gradle内建支持Groovy和Scala
+Gradle内建支持Groovy和Scala，只需要应用Groovy插件，如下所示：
 
 ```
 apply plugin: 'groovy'
 ```
-Next the dependencies has to be added:
+接着添加依赖：
 
 ```
 compile 'org.codehaus.groovy:groovy-all:2.4.1'
 testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 ```
-and the information where Gradle should look for them:
+以及Gradle查询上述信息的仓储：
 
 ```
 repositories {
