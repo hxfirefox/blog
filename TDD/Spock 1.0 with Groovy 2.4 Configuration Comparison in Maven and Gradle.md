@@ -42,7 +42,7 @@ Maven无法天然支持除Java外的其他JVM语言，例如Groovy或Scala。想
     </configuration>
 </plugin>
 ```
-注意此处需要包括 \*\*/*Spec.java 而不是 \*\*/*Spec.groovy，此外在依赖中需要增加如下：
+注意此处需要包括 \*\*/\*Spec.java 而不是 \*\*/\*Spec.groovy，此外在依赖中需要增加如下：
 
 ```
 <dependencies>
