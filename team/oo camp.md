@@ -12,8 +12,10 @@
 ![img=onclass](https://github.com/hxfirefox/blog/blob/master/team/res/1614314764.jpg)
 
 美女讲师娴娴老师通过游戏与同学们互动，向同学们介绍现实工作中的团队组织结构以及工作流程。
+![img=game](https://github.com/hxfirefox/blog/blob/master/team/res/1372231200.jpg)
 
 亚旭老师作为公司级面试官，与同学们交流职涯的规划，探讨如何在工作和学习中锤炼自身，为挑战做好准备。
+![img=choice](https://github.com/hxfirefox/blog/blob/master/team/res/1664883444.jpg)
 
 来自5所高校的青年才俊在整个课程中，始终保持了高昂的热情，TDD、重构、结对编程、版本管理一个个新名词让所有参与者都获得了前所未有的提升。
 ![img=study](https://github.com/hxfirefox/blog/blob/master/team/res/1760258351.jpg)
@@ -24,4 +26,4 @@
 非常幸运地，公司为我所在团队提供外部资源的支持，一位来自TW的咨询师成为了我的敏捷开发入门导师，他与我结对，传授给我更加丰富生动的敏捷软件开发知识，TDD、重构、持续集成就如同一把把神兵利器为我增添了无穷的战斗力。在自我提升的同时，我想到了将这些知识推广出去，传播到我的团队，让团队中的每个人都拥有这些神奇的技能。而当我的团队中的大多数人都具备这些技能时，我意识这些技能和知识应当作为所有软件从业者入门的必须，回顾我的学生阶段，不禁有些后悔为何不早点接触这些技能，从学生阶段养成的好习惯会伴随我们一生，并影响我们的工作和生活。这让我萌发了走进校园，去传播这些知识和技能的想法，非常感谢公司的这次“兴人类TDD培训”为我提供了这样的一个平台。
 
 青春飞扬，筑梦未来，期待与同学们再次相逢在公司！
-![img=all](https://github.com/hxfirefox/blog/blob/master/team/res/416489934.jpg)
+![img=all](https://github.com/hxfirefox/blog/blob/master/team/res/2081668344.jpg)
