@@ -58,15 +58,13 @@
 >- Count the number of objects inside the circle and the total number of objects.
 >- The ratio of the two counts is an estimate of the ratio of the two areas, which is π/4. Multiply the result by 4 to estimate π.
 >
->Erlang实现见src/mc_pi.erl
+>Erlang实现见[mc_pi.erl](https://github.com/hxfirefox/alpha_in_erlang/src/mc_pi.erl)
 
-利用相同原理和步骤即可在Tic Tac Toe上得到应用，Erlang实现见src/mcts.erl，这种实现采用随机落子的方式。随机落子在效率上比
-较浪费，已有的成果较少获得传承，这引出了另一个问题，即在有限的时间内，落子选择如何平衡“探索与利用现有成果”的问题。此类
-问题可通过借助[**Multi-armed bandit**](https://en.wikipedia.org/wiki/Multi-armed_bandit)加以思考，最终引入UCB1算法，
-Erlang实现见src/mcts_ucb1.erl。
+利用相同原理和步骤即可在Tic Tac Toe上得到应用，Erlang实现见[mcts.erl](https://github.com/hxfirefox/alpha_in_erlang/blob/master/src/mcts.erl)，这种实现采用随机落子的方式。随机落子在效率上比较浪费，已有的成果较少获得传承，这引出了另一个问题，即在有限的时间内，落子选择如何平衡“探索与利用现有成果”的问题。此类问题可通过借助[**Multi-armed bandit**](https://en.wikipedia.org/wiki/Multi-armed_bandit)加以思考，最终引入UCB1算法，
+Erlang实现见[mcts_ucb1.erl](https://github.com/hxfirefox/alpha_in_erlang/blob/master/src/mcts_ucb1.erl)。
 
 此外，尽管Tic Tac Toe盘面空间有限，但缩小Tree Search的宽度与深度仍然是可以优化的，更何况对于更大盘面空间的对弈游戏而言，
-这是一个必须要予以重视和解决的问题，最简单的方式是采取并行的方式，Erlang实现见src/mcts_p.erl以及src/mcts_ucb1_p.erl。
+这是一个必须要予以重视和解决的问题，最简单的方式是采取并行的方式，Erlang实现见[mcts_p.erl](https://github.com/hxfirefox/alpha_in_erlang/blob/master/src/mcts_p.erl)以及[mcts_ucb1_p.erl](https://github.com/hxfirefox/alpha_in_erlang/blob/master/src/mcts_ucb1_p.erl)。
 
 ## 题外话——关于Mathematics
 
