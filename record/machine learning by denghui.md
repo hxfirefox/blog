@@ -1,4 +1,4 @@
-# 机器学习与数学 —— 听邓辉解构Alpha Go
+# 机器学习、数学及启示 —— 听邓辉解构Alpha Go
 
 >Implementing *"Mastering the game of Go with deep neural networks and tree search"* in Erlang
 
