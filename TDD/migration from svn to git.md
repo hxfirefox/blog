@@ -7,9 +7,9 @@
 
 # 实施 
 
-svn log --xml | grep author | sort -u | perl -pe 's/.>(.?)<./$1 - /' | xargs > user.txt
+svn log --xml [svn路径] | grep author | sort -u | perl -pe 's/.>(.?)<./$1 - /' | xargs > user.txt
 
-转换xml为[author]=[author]<email>
+转换xml为[author]=[author]\<email\>
 
 ```
 #!/bin/bash
