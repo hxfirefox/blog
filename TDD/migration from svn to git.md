@@ -2,11 +2,12 @@
 ========================
 
 >参考：
->(坑死人不偿命，svn 迁移到 git)[http://blog.csdn.net/cctt_1/article/details/41317419]
 >
->(SVN 迁移到 Git)[http://blog.csdn.net/lhzhang1985/article/details/6294223]
+>[坑死人不偿命，svn 迁移到 git](http://blog.csdn.net/cctt_1/article/details/41317419)
 >
->(合并两个git仓库)[http://blog.csdn.net/gouboft/article/details/8450696]
+>[SVN 迁移到 Git](http://blog.csdn.net/lhzhang1985/article/details/6294223)
+>
+>[合并两个git仓库](http://blog.csdn.net/gouboft/article/details/8450696)
 
 # 背景
 
