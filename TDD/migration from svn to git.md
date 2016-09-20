@@ -5,11 +5,16 @@
 
 # 需求
 
-# 实施 
+# 实施
 
+## 迁移
+利用git svn指令可以轻松地完成迁移，并能够保留历史记录，即迁移svn log至git log，如果想做的更完美就需要首选转换author信息，在 svn中，每个提交者拥有一个用户名，记录在提交信息中，在本文服务的项目中author信息格式为[用户名][ID]，为了让这条信息更好的映射到git author数据里，需要建立一个相互间的映射关系。
+
+首先，将svn log中的author信息保留下来，采用xml格式\<author\>用户名+ID\</author\>
+```
 svn log --xml [svn路径] | grep author | sort -u | perl -pe 's/.>(.?)<./$1 - /' | xargs > user.txt
-
-转换xml为[author]=[author]\<email\>
+```
+接着，需要将author信息转换git中的映射，格式为[用户名][ID]=[ID]\<ID@zte.com.cn\>
 
 ```
 #!/bin/bash
@@ -30,15 +35,11 @@ do
      echo ${line}| sed -e "s/</${id[0]}<${id[0]}/g" >> author.txt
 done
 ```
-```
-git svn clone http://10.75.8.170/svn/ZXNFM_REPOS/trunk/SDN_NFManager/50.zenic --trunk=zxr10-models --authors-file=user.txt --no-metadata -s nfmdevmod
-```
 
-移动使用mv，移动后应加上.gitignore和pom.xml
+有了上述信息，接下来的就是使用git svn clone指令
 
 ```
-svn log --xml http://10.75.8.170/svn/ZXNFM_REPOS/trunk/SDN_NFManager/50.zenic/configuration | grep author | sort -u | perl -pe 's/.>(.?)<./$1 - /' | xargs > userinfo.txt
-git svn clone http://10.75.8.170/svn/ZXNFM_REPOS/trunk/SDN_NFManager/50.zenic --trunk=configuration --authors-file=userinfo.txt --no-metadata -s nfmconf
+git svn clone [svn url] --trunk=[trunk subdir] --authors-file=author.txt --no-metadata -s [target dir]
 ```
 
 # 参考
