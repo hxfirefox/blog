@@ -14,7 +14,7 @@
 ```
 svn log --xml [svn路径] | grep author | sort -u | perl -pe 's/.>(.?)<./$1 - /' | xargs > user.txt
 ```
-接着，需要将author信息转换git中的映射，格式为[用户名][ID]=[ID]\<ID@zte.com.cn\>
+接着，需要将author信息转换git中的映射，格式为[用户名][ID]=[ID]\<ID@email\>
 
 ```
 #!/bin/bash
@@ -27,7 +27,7 @@ if [ -e "author.txt" ]; then
      rm -rf author.txt
 fi
 
-cat $1 | awk '{print}' | sed 's/<author>//g' | sed 's/<\/author>/=<@zte.com.cn>/g' | sed -e 's/ /\n/g' >> usertmp.txt
+cat $1 | awk '{print}' | sed 's/<author>//g' | sed 's/<\/author>/=<@email>/g' | sed -e 's/ /\n/g' >> usertmp.txt
  
 cat usertmp.txt | while read line
 do
@@ -40,6 +40,12 @@ done
 
 ```
 git svn clone [svn url] --trunk=[trunk subdir] --authors-file=author.txt --no-metadata -s [target dir]
+```
+
+在执行git svn clone时会遇到不少问题，最典型的是如下的错误*Ignoring error from SVN, path probably does not exist: (160013)*，发生此错误的原因是由于svn分支中并非所有的文件路径都是从最初阶段产生的，而是随着项目的变化逐个添加或者删除，而clone时则是从最初版本开始，解决这个问题可以略微修改指令，如下。并且在实际操作过程中，如果需要从svn分支下的某个文件路径衍生出git库来，这样做可以节省检出时间。
+
+```
+git svn clone -r[version1]:[version2] [svn url] --trunk=[trunk subdir] --authors-file=author.txt --no-metadata -s [target dir]
 ```
 
 # 参考
