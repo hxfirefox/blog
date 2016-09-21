@@ -81,11 +81,41 @@ git svn clone -r[version1]:[version2] [svn url] --trunk=[trunk subdir] --authors
 ```
 
 ## 分割与合并
-这次迁移活动涉及多地多团队，由于一些历史原因，之前svn库中，各个团队的代码耦合在一起，因此这次迁移正好也是一次调整代码目录解耦的机会。库的分割相对来说较为简单，svn基于目录的检出方式能够为库的分割提供较大的便利
+这次迁移活动涉及多地多团队，由于一些历史原因，之前svn库中，各个团队的代码耦合在一起，因此这次迁移正好也是一次调整代码目录解耦的机会。库的分割相对来说较为简单，svn基于目录的检出方式能够为库的分割提供较大的便利，而合并则稍微复杂一下，下面演示了如何将两个由svn迁移到git的库合并。
+
+首先，分别检出两个git库，执行如下指令，通过git log可以查看到各自的日志也同时迁移至git中
+
+```
+git svn clone http://10.75.8.170/svn/ZXNFM_REPOS/trunk/SDN_NFManager/50.zenic --trunk=configuration --authors-file=userinfo.txt --no-metadata -s nfmconf
+
+git svn clone http://10.75.8.170/svn/ZXNFM_REPOS/trunk/SDN_NFManager/50.zenic --trunk=southconfig --authors-file=usersc.txt --no-metadata -s nfm_sc
+```
 
 ![img=logo1](https://github.com/hxfirefox/blog/blob/master/TDD/img/log1.png)
 
 ![img=logo2](https://github.com/hxfirefox/blog/blob/master/TDD/img/log2.png)
+
+选定nfmconf作为master，然后将nfm_sc库作为前者的远程仓库，执行如下指令
+
+```
+git remote add other ../nfm_sc/
+git fetch other
+```
+
+将fm_sc仓库的master分支作为新分支checkout到本地，新分支名设定为repo1
+
+```
+git checkout -b repo1 other/master
+```
+
+切换回master分支，并合并分支
+
+```
+git checkout master
+git merge repo1
+```
+
+此时在查看git log就能够看到两个库的log已经合并到了一起
 
 ![img=logo3](https://github.com/hxfirefox/blog/blob/master/TDD/img/log3.png)
 
