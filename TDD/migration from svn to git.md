@@ -83,11 +83,11 @@ git svn clone -r[version1]:[version2] [svn url] --trunk=[trunk subdir] --authors
 ## 分割与合并
 这次迁移活动涉及多地多团队，由于一些历史原因，之前svn库中，各个团队的代码耦合在一起，因此这次迁移正好也是一次调整代码目录解耦的机会。库的分割相对来说较为简单，svn基于目录的检出方式能够为库的分割提供较大的便利
 
-[img=logo1](https://github.com/hxfirefox/blog/blob/master/TDD/img/log1.png)
+![img=logo1](https://github.com/hxfirefox/blog/blob/master/TDD/img/log1.png)
 
-[img=logo2](https://github.com/hxfirefox/blog/blob/master/TDD/img/log2.png)
+![img=logo2](https://github.com/hxfirefox/blog/blob/master/TDD/img/log2.png)
 
-[img=logo3](https://github.com/hxfirefox/blog/blob/master/TDD/img/log3.png)
+![img=logo3](https://github.com/hxfirefox/blog/blob/master/TDD/img/log3.png)
 
 # 参考
 在实施过程中参考了如下文章：
