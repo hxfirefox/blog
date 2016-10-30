@@ -124,6 +124,16 @@ git merge repo1
 
 ![img=logo3](https://github.com/hxfirefox/blog/blob/master/TDD/img/log3.png)
 
+# 聚合项目
+聚合项目遇到了不少坑，首当其冲便是git submodule的使用，网上大部分教程都是告诉git submodule命令是这么书写，几乎没有介绍其使用方法，导致我在使用的过程中，上来就犯了一个错误，我的潜意识认为执行git submodule add后，就可以毫不费力地在每次更新中获得其他项目的最新代码，可是很遗憾的是git submodule add执行后只是添加当前最新的一次提交记录，也就是说如果只添加一次显然它执行的结果与预期中获得每次代码更新是背道而驰的。
+
+正确的使用方法是监听repo变化，动态地执行git submodule add，由于制作版本并不需要实施，因此可以考虑采用定时的执行如下脚本
+```
+git submodule add [url] [local dir]
+git submodule update --init --recursive
+```
+聚合项目的另一个关键是生成项目的骨架，此时就需要关注模块代码之间的依赖关系，通过pom文件中的module字段配置和依赖管理可以整理出清晰的依赖。
+
 # 参考
 在实施过程中参考了如下文章：
 
