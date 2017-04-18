@@ -63,3 +63,46 @@ mvn sonar:sonar
 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar
 ```
 
+To get coverage information, you'll need to generate the coverage report before the analysis. See Code Coverage by Unit Tests for Java Project and Code Coverage by Integration Tests for Java Project for more information.
+
+## 配置SonarQube分析
+
+A pom.xml file sample is available here.
+Additional analysis parameters are listed on the Analysis Parameters page.
+
+**Security**
+
+Any user who's granted Execute Analysis permission can run an analysis.
+If the Anyone group is not granted Execute Analysis permission or if the SonarQube instance is secured (the sonar.forceAuthentication property is set to true), the analysis token of a user with Execute Analysis permission must be provided through the sonar.login property. Example: sonar-scanner -Dsonar.login=[my analysis token]
+
+## 从分析中排除模块
+
+You can either:
+define property <sonar.skip>true</sonar.skip> in the pom.xml of the module you want to exclude
+use build profiles to exclude some module (like for integration tests)
+use Advanced Reactor Options (such as "-pl"). For example mvn sonar:sonar -pl !module2
+
+## 样例项目
+
+To help you get started, a simple project sample is available on github that can be browsed or downloaded: projects/languages/java/maven/java-maven-simple
+How to Fix Version of Maven Plugin
+It is recommended to lock down versions of Maven plugins:
+
+**roject analyzed with Maven 3**
+
+```
+<build>
+  <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.2</version>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+</build>
+```
+
+# 故障定位
+
