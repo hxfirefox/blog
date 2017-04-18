@@ -1,17 +1,24 @@
 基于Maven的Sonar分析
 ===================
 
-```
-目录
-- 特性
-- Compatibility
-- Prerequisites
-- Initial Setup
-  - Global Settings
-- Analyzing a Maven Project
-  - Configuring the SonarQube Analysis
-  - Excluding a module from SonarQube analysis
-  - Sample Projects
-  - How to Fix Version of Maven Plugin
-  - Troubleshooting
-```
+# 特性
+
+建议在基于Maven管理的Java项目上进行本文所述内容
+
+# 兼容性
+
+| Maven Version | 2.x | 3.x |
+|:--------------|:----|:----|
+|Compatibility	|  N	|  Y  |
+ 
+From maven-sonar-plugin 2.7, SonarQube < 4.5 is no longer supported.
+If using SonarQube instance prior to 4.5, you should use maven-sonar-plugin 2.6.
+From maven-sonar-plugin 3.1, Maven < 3.0 is no longer supported.
+If using Maven prior to 3.0, you should use maven-sonar-plugin 3.0.2.
+Prerequisites
+Maven 3.x
+SonarQube is already installed
+At least the minimal version of Java supported by your SonarQube server is in use (Java 8 for latest LTS)
+The language plugins for each of the languages you wish to analyze are installed
+You have read Analyzing Code Source. 
+
