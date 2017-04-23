@@ -88,17 +88,15 @@ pom.xml文件样例如下：
 ```
 如需要更多的分析参数可以在[the Analysis Parameters](https://docs.sonarqube.org/display/SONAR/Analysis+Parameters)中找到
 
-**Security**
+**安全**
 
-Any user who's granted Execute Analysis permission can run an analysis.
-If the Anyone group is not granted Execute Analysis permission or if the SonarQube instance is secured (the sonar.forceAuthentication property is set to true), the analysis token of a user with Execute Analysis permission must be provided through the sonar.login property. Example: sonar-scanner -Dsonar.login=[my analysis token]
+通过sonar.login属性可以提供用户执行分析权限，范例如下：sonar-scanner -Dsonar.login=[my analysis token]
 
-## 从分析中排除模块
+## 从分析中排除无需分析的模块
 
-You can either:
-define property <sonar.skip>true</sonar.skip> in the pom.xml of the module you want to exclude
-use build profiles to exclude some module (like for integration tests)
-use Advanced Reactor Options (such as "-pl"). For example mvn sonar:sonar -pl !module2
+- 可以通过在想要排除的模块的pom.xml文件中定义属性<sonar.skip>true</sonar.skip>或者
+- 使用构建规则来排除某些模块（类似集成测试）
+- 使用Advanced Reactor选项（如 "-pl"），例如：mvn sonar:sonar -pl !module2
 
 ## 样例项目
 
