@@ -63,7 +63,7 @@ mvn sonar:sonar
 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar
 ```
 
-要想获得测试覆盖信息，需要在分析执行前产生测试覆盖报告。想要获取更多信息请查看“Code Coverage by Unit Tests for Java Project and Code Coverage by Integration Tests for Java Project”
+要想获得测试覆盖信息，需要在分析执行前产生测试覆盖报告。想要获取更多信息请查看[Code Coverage by Unit Tests for Java Project and Code Coverage by Integration Tests for Java Project](https://docs.sonarqube.org/display/PLUG/Code+Coverage+by+Unit+Tests+for+Java+Project)
 
 ## 配置SonarQube分析
 
