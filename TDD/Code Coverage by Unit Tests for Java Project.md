@@ -14,5 +14,4 @@ You need to give the path of test execution and code coverage reports using the 
 
 |属性|范围|范例|说明|
 |:---|:--|:---|:---|
-|sonar.junit.reportsPath|Project-wide|target/surefire-reports|Import tests execution reports (Surefire XML format).
-Set the property to the path of the directory containing all the XML reports.|
+|sonar.junit.reportsPath|Project-wide|target/surefire-reports|Import tests execution reports (Surefire XML format).Set the property to the path of the directory containing all the XML reports.|
