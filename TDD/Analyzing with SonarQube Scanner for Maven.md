@@ -50,8 +50,8 @@
 ```
 
 # 分析Maven项目
-Analyzing a Maven project consists of running a Maven goal: sonar:sonar in the directory where the pom.xml file sits.
 
+分析Maven工程需要在工程pomx.xml所在路径下执行Maven命令：sonar:sonar
 ```
 mvn clean verify sonar:sonar
  
@@ -63,12 +63,14 @@ mvn sonar:sonar
 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar
 ```
 
-To get coverage information, you'll need to generate the coverage report before the analysis. See Code Coverage by Unit Tests for Java Project and Code Coverage by Integration Tests for Java Project for more information.
+要想获得测试覆盖信息，需要在分析执行前产生测试覆盖报告。想要获取更多信息请查看“Code Coverage by Unit Tests for Java Project and Code Coverage by Integration Tests for Java Project”
 
 ## 配置SonarQube分析
 
-A pom.xml file sample is available here.
-Additional analysis parameters are listed on the Analysis Parameters page.
+pom.xml文件样例如下：
+```
+```
+如需要更多的分析参数可以在“the Analysis Parameters”中找到
 
 **Security**
 
