@@ -100,11 +100,12 @@ pom.xml文件样例如下：
 
 ## 样例项目
 
-To help you get started, a simple project sample is available on github that can be browsed or downloaded: projects/languages/java/maven/java-maven-simple
-How to Fix Version of Maven Plugin
-It is recommended to lock down versions of Maven plugins:
+在github上提供一个简单的项目范例用于[学习](https://github.com/SonarSource/sonar-examples)和[下载](https://github.com/SonarSource/sonar-examples/zipball/master)：projects/languages/java/maven/java-maven-simple
 
-**roject analyzed with Maven 3**
+## 如何查找Maven插件版本
+建议[锁定Maven插件版本](http://blog.sonatype.com/2008/04/maven-209-released/):
+
+**使用Maven 3分析项目**
 
 ```
 <build>
