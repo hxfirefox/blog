@@ -25,8 +25,8 @@
 
 # 首次安装
 ## 全局设置
-Edit the settings.xml file, located in $MAVEN_HOME/conf or ~/.m2, to set the plugin prefix and optionally the SonarQube server URL.
-Example:
+
+编辑位于$MAVEN_HOME/conf或~/.m2路径下的settings.xml文件，设置插件前缀以及可选的SonarQube服务器地址，范例如下：
 ```
 <settings>
     <pluginGroups>
