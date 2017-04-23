@@ -69,8 +69,24 @@ mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar
 
 pom.xml文件样例如下：
 ```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sonarqube</groupId>
+  <artifactId>example-java-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>Java :: Simple Project :: SonarQube Scanner for Maven</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.language>java</sonar.language>
+  </properties>
+
+</project>
 ```
-如需要更多的分析参数可以在“the Analysis Parameters”中找到
+如需要更多的分析参数可以在[the Analysis Parameters](https://docs.sonarqube.org/display/SONAR/Analysis+Parameters)中找到
 
 **Security**
 
