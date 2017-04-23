@@ -12,7 +12,8 @@ The Java Plugin is going to reuse reports and not generate them, so before tryin
 # 用法
 
 通过下列参数将测试执行和代码覆盖报告的路径传递给SonarQube
+
 |属性|范围|范例|说明|
 |:---|:--|:---|:---|
-|sonar.junit.reportsPath|Project-wide|target/surefire-reports|Import tests execution reports (Surefire XML format).Set the property to the path of the directory containing all the XML reports.|
+|sonar.junit.reportsPath|Project-wide|target/surefire-reports|导入测试执行报告(Surefire XML格式)，设置该属性为包含所有XML报告的文件路径|
 |sonar.jacoco.reportPaths|Project-wide|target/jacoco.exec, target/jacoco-it.exec (default)|Import JaCoCo code coverage reports.Set the property to the path of the JaCoCo .exec reports, merge multiple reports.(if you are using a version of SonarQube prior to 6.2 please use sonar.jacoco.reportPath property)|
