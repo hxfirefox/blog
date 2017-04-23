@@ -18,4 +18,10 @@ Sonar插件可以重用已经生成的测试报告，因此只需要保证测试
 |sonar.junit.reportsPath|Project-wide|target/surefire-reports|导入测试执行报告(Surefire XML格式)，设置该属性为包含所有XML报告的文件路径|
 |sonar.jacoco.reportPaths|Project-wide|target/jacoco.exec, target/jacoco-it.exec (default)|SonarQube 6.2以上版本支持，导入JaCoCo代码覆盖报告，设置该属性为JaCoCo .exec报告路径，合并多份报告(SonarQube版本低于6.2，请使用sonar.jacoco.reportPath属性)|
 |sonar.jacoco.reportPath|Project-wide|target/jacoco.exec (default)|导入JaCoCo代码覆盖报告，设置该属性为JaCoCo .exec报告路径|
-|sonar.cobertura.reportPath|Project-wide|target/site/cobertura/coverage.xml|导入Cobertura代码覆盖报告，设置该属性为Cobertura .xml报告路径，注意：Cobertura插件与高于6.0的SonarQube版本不兼容|
+|sonar.cobertura.reportPath|Project-wide|target/site/cobertura/coverage.xml|导入Cobertura代码覆盖报告，设置该属性为Cobertura .xml报告路径，**注意：Cobertura插件与高于6.0的SonarQube版本不兼容**|
+|sonar.clover.reportPath||target/clover.xml|导入Clover代码覆盖报告，设置该属性为Clover .xml报告路径|
+
+Details on using JaCoCo are available in Usage of JaCoCo with Java Plugin. 
+For Cobertura, read the documentation to get more information on how to generate the reports, or you can check the Analyzing with SonarQube Scanner for Maven documentation.
+When no reports are found, coverage value is not set. This behavior can be overridden by a property for JaCoCo.
+Project samples are available on github that can be browsed or downloaded: projects/languages/java/code-coverage/ut
