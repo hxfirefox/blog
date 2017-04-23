@@ -11,17 +11,17 @@
 |:--------------|:----|:----|
 |Compatibility	|  N	|  Y  |
  
-From maven-sonar-plugin 2.7, SonarQube < 4.5 is no longer supported.
-If using SonarQube instance prior to 4.5, you should use maven-sonar-plugin 2.6.
-From maven-sonar-plugin 3.1, Maven < 3.0 is no longer supported.
-If using Maven prior to 3.0, you should use maven-sonar-plugin 3.0.2.
+从maven-sonar-plugin 2.7版本开始，就不再支持低于4.5的SonarQube版本，因此如果SonarQube版本低于4.5，应使用maven-sonar-plugin 2.6版本。
+从maven-sonar-plugin 3.1版本开始，就不再支持低于3.0的Maven < 3.0版本，因此如果Maven版本低于3.0，应使用maven-sonar-plugin 3.0.2版本。
 
 # 准备工作
-Maven 3.x
-SonarQube is already installed
-At least the minimal version of Java supported by your SonarQube server is in use (Java 8 for latest LTS)
-The language plugins for each of the languages you wish to analyze are installed
-You have read Analyzing Code Source. 
+
+需要具备如下软件及环境：
+- Maven 3.x
+- 安装SonarQube
+- 安装的SonarQube服务支持的最低Java版本
+- 分析各种编码语言的插件
+- 已经阅读“Analyzing Code Source” 
 
 # 首次安装
 ## 全局设置
