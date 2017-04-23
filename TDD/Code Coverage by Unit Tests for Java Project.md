@@ -11,3 +11,8 @@ The Java Plugin is going to reuse reports and not generate them, so before tryin
 
 # Usage
 You need to give the path of test execution and code coverage reports using the following parameters.
+
+|属性|范围|范例|说明|
+|:---|:--|:---|:---|
+|sonar.junit.reportsPath|Project-wide|target/surefire-reports|Import tests execution reports (Surefire XML format).
+Set the property to the path of the directory containing all the XML reports.|
