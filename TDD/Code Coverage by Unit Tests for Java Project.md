@@ -21,7 +21,10 @@ Sonar插件可以重用已经生成的测试报告，因此只需要保证测试
 |sonar.cobertura.reportPath|Project-wide|target/site/cobertura/coverage.xml|导入Cobertura代码覆盖报告，设置该属性为Cobertura .xml报告路径，**注意：Cobertura插件与高于6.0的SonarQube版本不兼容**|
 |sonar.clover.reportPath||target/clover.xml|导入Clover代码覆盖报告，设置该属性为Clover .xml报告路径|
 
-Details on using JaCoCo are available in Usage of JaCoCo with Java Plugin. 
-For Cobertura, read the documentation to get more information on how to generate the reports, or you can check the Analyzing with SonarQube Scanner for Maven documentation.
-When no reports are found, coverage value is not set. This behavior can be overridden by a property for JaCoCo.
-Project samples are available on github that can be browsed or downloaded: projects/languages/java/code-coverage/ut
+使用JaCoCo的细节可以参照[Usage of JaCoCo with Java Plugin](https://docs.sonarqube.org/display/PLUG/Usage+of+JaCoCo+with+Java+Plugin). 
+
+对于Cobertura，可以阅读相应的文档来获取更多有关生成报告的信息，或者可阅读[Analyzing with SonarQube Scanner for Maven](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven)
+
+如果插件找不到报告，则代码覆盖值也无法显示，可以通过JaCoCo属性改写
+
+Github上可以学习和下载范例：projects/languages/java/code-coverage/ut
