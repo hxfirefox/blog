@@ -1,15 +1,17 @@
-Usage of JaCoCo with Java Plugin
-================================
+如何使用JaCoCo的Java插件
+=======================
 
-To launch JaCoCo as part of your Maven build, use this command: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true
-For more details on JaCoCo, see its documentation.
-You may also find the README.md of the sample project helpful.
-There is a known issue on version 0.7.3 of JaCoCo agent producing binary reports incompatible with JaCoCo analyzer 0.7.2 embedded in Java plugin. This issue is fixed with version 0.7.4 of the agent, so please prefer this version.
+使用如下命令可以在maven构建过程中启动：
+
+```
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true
+```
+
+JaCoCo 0.7.3产生的二进制报告与JaCoCo分析器0.7.2无法兼容，这是一个已知的问题，并且在0.7.4中得到修复。
 Java Plugin is compatible with JaCoCo 0.7.5 starting from Java Plugin 3.4 : 
 
-Using argLine
-If your project uses the argLine property to configure the surefire-maven-plugin, be sure that argLine defined as a property, rather than as part of the plugin configuration. Doing so will allow JaCoCo to set its agent properly. Otherwise the JVM may crash while tests are running.
-That is, argLine should be defined this way: 
+**使用argLine**
+如果项目使用了argLine属性来配置surefire-maven-plugin，应将argLine定义成property，而不是插件配置的一部分。这样做可以让JaCoCo正确地设置代理，否则当测试运行时可能会发生JVM崩溃。
 
 ```
       <properties>
