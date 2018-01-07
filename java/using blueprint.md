@@ -1,6 +1,24 @@
 ODL buleprint 使用指引
 ====================
 
+Blueprint is an OSGi compendium spec for a dependency injection framework designed specifically for use in an OSGi container. It was derived from Spring DM and is very similar. Karaf includes the Apache Aries blueprint implementation with its base features.
+
+To use blueprint a bundle provides XML resource(s) that describe what OSGi service dependencies are needed, what Java objects to instantiate for the bundle's business logic and how to wire them together. In addition, a bundle can export/advertise its own OSGi services.
+
+There are 4 main elements in a blueprint xml file: bean, service, reference and reference-list:
+
+-bean - an element that describes a Java object to be instantiated given a class name and optional constructor args and properties.
+-service - advertises a bean as an OSGi service
+-reference - imports a singleton OSGi service that implements a specified interface and/or satisfies a specified property filter
+-reference-list - imports multiple OSGi services that implement a specified interface and/or satisfy a specified property filter
+
+
+For detailed documentation of these elements and blueprint design, refer to the Blueprint chapter of the OSGi compendium spec. Also refer to the Aries documentation
+
+The blueprint extender is the component that extracts and parses blueprint XML resources from bundles as they are activated and creates the blueprint containers. By default, the extender looks for XML resources under the standard OSGI-INF/blueprint path inside bundles. The parsing and container creation is done asynchronously so there's no implicit deterministic startup ordering as is the case with Opendaylight's config subsystem via feature ordering. Therefore, in order to preserve this functionality with blueprint, if needed, and to avoid intermittent timing issues on startup, Opendaylight has its own component that scans a custom path, org/opendaylight/blueprint. This allows for the creation of blueprint containers to be potentially ordered. So it is recommended to put your blueprint XML files under src/main/resources/org/opendaylight/blueprint in your bundle projects (as of this writing, ordering hasn't been implemented as there hasn't been a need for it).
+
+The following sections illustrate examples for writing blueprint XML for Opendaylight bundles along with some best practices and illustrate the Opendaylight's blueprint extensions that provide additional functionality and convenient shortcuts for using MD-SAL core services. 
+
 # MD-SAL blueprint 扩展
 ## Global RPCs
 
@@ -65,3 +83,7 @@ routed-rpc-implementation扩展注册routed RpcService实现。
 
 </blueprint>
 ```
+
+routed-rpc-implementation元素发现引用的实例实现了RpcService接口，并向MD-SAL RpcProviderRegistry进行注册。它也会创建实例（id=fooRpcService）后注入到org.opendaylight.app.Bar实例中。当容器销毁时，RoutedRpcRegistration实例自动关闭。
+
+如果实例实现了多个RpcService接口，则会在使用该blueprint扩展时发生失败。这种场景下必须通过interface属性指定需要的接口，并为每个接口创建一个routed-rpc-implementation元素。
