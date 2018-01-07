@@ -16,7 +16,7 @@ Blueprint XML文件中共有4个元素：bean，service，reference和reference-
 
 The blueprint extender is the component that extracts and parses blueprint XML resources from bundles as they are activated and creates the blueprint containers. By default, the extender looks for XML resources under the standard OSGI-INF/blueprint path inside bundles. The parsing and container creation is done asynchronously so there's no implicit deterministic startup ordering as is the case with Opendaylight's config subsystem via feature ordering. Therefore, in order to preserve this functionality with blueprint, if needed, and to avoid intermittent timing issues on startup, Opendaylight has its own component that scans a custom path, org/opendaylight/blueprint. This allows for the creation of blueprint containers to be potentially ordered. So it is recommended to put your blueprint XML files under src/main/resources/org/opendaylight/blueprint in your bundle projects (as of this writing, ordering hasn't been implemented as there hasn't been a need for it).
 
-The following sections illustrate examples for writing blueprint XML for Opendaylight bundles along with some best practices and illustrate the Opendaylight's blueprint extensions that provide additional functionality and convenient shortcuts for using MD-SAL core services. 
+下面将具体说明如何编辑ODL bundle的blueprint XML以及ODL对blueprint的扩展提供的便利方式使用MD-SAL核心服务。
 
 # 序言： XML vs. Java annotations
 
@@ -36,6 +36,43 @@ The following sections illustrate examples for writing blueprint XML for Openday
   <reference id="rpcRegistry" interface="org.opendaylight.controller.sal.binding.api.RpcProviderRegistry"/>
   <reference id="notificationService" 
           interface="org.opendaylight.controller.md.sal.binding.api.NotificationPublishService"/>
+
+</blueprint>
+```
+
+Internally, the reference element creates a proxy that implements the specified interface and wraps the actual service instance. This is done due to the dynamic nature of OSGi services as implementations may, theoretically, come and go if bundles are dynamically stopped or updated/restarted. In practice, though, this is difficult to achieve in large platforms like Opendaylight with hundreds of bundles (but that's another topic).
+
+On startup, the container will first wait for all referenced service dependencies to be satisfied before continuing. The default timeout is 5 minutes. If the timeout expires, the container fails fast. In addition, if a service later becomes unavailable it will block method calls and wait the timeout period for a new service instance to become available. If the timeout expires, a runtime exception is thrown. This can be handled in application code if one really wants to support dynamic bundle updates but, as mentioned, in practice this is not realistically feasible with large applications.
+
+There may be multiple service implementations advertised for the same interface. This is the case with the DataBroker - there is the default implementation and the specialized PingPongDataBroker. It is ambiguous as to which service is obtained unless an OSGi service property filter is specified to distinguish which implementation is desired.
+
+MD-SAL services are advertised with a specific property named type. Opendaylight defines an extension attribute to the reference element named type that, internally, is added to the OSGi service filter. This is illustrated in the above example for the DataBroker reference element, where the odl:type attribute is set to default. If one wanted the PingPongDataBroker then set it to pingpong. In order to access the extension, the Opendaylight extension namespace, http://opendaylight.org/xmlns/blueprint/v1.0.0, must be specified in the root blueprint element and type must be prefixed appropriately.
+
+As a convention, the default type is used for the default implementation of the service with other types being specialized implementations. This allows consumers to obtain whichever implementation the provider deems as the default without having to explicitly know it and allows the provider to switch to a new default implementation without requiring all consumers to change their referenced type.
+
+To avoid having to specify the type attribute for every reference element, another Opendaylight extension, use-default-for-reference-types, can be specified in the root blueprint element. This attribute automatically adds a filter to all reference elements such that the type property is either not set or set to default. This ensures the default implementation is imported unless type is explicitly specified for a reference element, in which case it overrides the use-default-for-reference-types setting. It is recommended to always set use-default-for-reference-types to true as a fallback.
+
+The odl:type attribute can also be specified for service elements as a shortcut to add the service property. 
+
+# Instantiating business logic
+## Using direct class instantiation
+Now that we've seen how to import MD-SAL services, the next step is to instantiate the business logic.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+                 xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0"
+    odl:use-default-for-reference-types="true">
+
+  <reference id="dataBroker" interface="org.opendaylight.controller.md.sal.binding.api.DataBroker"/>
+
+  <bean id="foo" class="org.opendaylight.app.Foo" init-method="init" destroy-method="close">
+    <property name="dataBroker" ref="dataBroker"/>
+  </bean>
+
+  <bean id="bar" class="org.opendaylight.app.Bar">
+    <argument ref="foo"/>
+  </bean>
 
 </blueprint>
 ```
