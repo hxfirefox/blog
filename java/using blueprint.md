@@ -18,6 +18,28 @@ The blueprint extender is the component that extracts and parses blueprint XML r
 
 The following sections illustrate examples for writing blueprint XML for Opendaylight bundles along with some best practices and illustrate the Opendaylight's blueprint extensions that provide additional functionality and convenient shortcuts for using MD-SAL core services. 
 
+# 序言： XML vs. Java annotations
+
+本指引描述“纯XML”实现的Blueprint，在一些ODL项目中已经出现使用Java注解来替代XML中的<bean>的Blueprint实现方式，例如：Genius、NetVirt。本指引推荐首先阅读本文来获得基础知识，之后如对ODL中的实现方式感兴趣，则可参考[Best Practices DI Guidelines](https://wiki.opendaylight.org/view/BestPractices/DI_Guidelines)。
+
+# Importing MD-SAL services
+
+如下XML通过reference元素导入标准MD-SAL服务，如DataBroker、RpcProviderRegistry以及NotificationPublishService。
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+                 xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0"
+    odl:use-default-for-reference-types="true">
+
+  <reference id="dataBroker" interface="org.opendaylight.controller.md.sal.binding.api.DataBroker" odl:type="default"/>
+  <reference id="rpcRegistry" interface="org.opendaylight.controller.sal.binding.api.RpcProviderRegistry"/>
+  <reference id="notificationService" 
+          interface="org.opendaylight.controller.md.sal.binding.api.NotificationPublishService"/>
+
+</blueprint>
+```
+
 # MD-SAL blueprint 扩展
 ## Global RPCs
 
