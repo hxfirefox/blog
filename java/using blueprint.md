@@ -12,7 +12,7 @@ Blueprint XML文件中共有4个元素：bean，service，reference和reference-
 - reference - 导入OSGi服务，该服务实现特定接口以及/或者满足特定的属性过滤条件
 - reference-list - 导入多个OSGi服务
 
-关于上述元素和blueprint的详细信息，可参考(OSGi纲要规范)[https://osgi.org/download/r4v42/r4.enterprise.pdf]中的Blueprint章节，也可参考(Aries文档)[http://aries.apache.org/modules/blueprint.html]。
+关于上述元素和blueprint的详细信息，可参考[OSGi纲要规范](https://osgi.org/download/r4v42/r4.enterprise.pdf)中的Blueprint章节，也可参考[Aries文档](http://aries.apache.org/modules/blueprint.html)。
 
 The blueprint extender is the component that extracts and parses blueprint XML resources from bundles as they are activated and creates the blueprint containers. By default, the extender looks for XML resources under the standard OSGI-INF/blueprint path inside bundles. The parsing and container creation is done asynchronously so there's no implicit deterministic startup ordering as is the case with Opendaylight's config subsystem via feature ordering. Therefore, in order to preserve this functionality with blueprint, if needed, and to avoid intermittent timing issues on startup, Opendaylight has its own component that scans a custom path, org/opendaylight/blueprint. This allows for the creation of blueprint containers to be potentially ordered. So it is recommended to put your blueprint XML files under src/main/resources/org/opendaylight/blueprint in your bundle projects (as of this writing, ordering hasn't been implemented as there hasn't been a need for it).
 
