@@ -7,10 +7,10 @@ To use blueprint a bundle provides XML resource(s) that describe what OSGi servi
 
 There are 4 main elements in a blueprint xml file: bean, service, reference and reference-list:
 
--bean - an element that describes a Java object to be instantiated given a class name and optional constructor args and properties.
--service - advertises a bean as an OSGi service
--reference - imports a singleton OSGi service that implements a specified interface and/or satisfies a specified property filter
--reference-list - imports multiple OSGi services that implement a specified interface and/or satisfy a specified property filter
+- bean - an element that describes a Java object to be instantiated given a class name and optional constructor args and properties.
+- service - advertises a bean as an OSGi service
+- reference - imports a singleton OSGi service that implements a specified interface and/or satisfies a specified property filter
+- reference-list - imports multiple OSGi services that implement a specified interface and/or satisfy a specified property filter
 
 
 For detailed documentation of these elements and blueprint design, refer to the Blueprint chapter of the OSGi compendium spec. Also refer to the Aries documentation
