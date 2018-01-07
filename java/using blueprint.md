@@ -41,3 +41,27 @@ ODL提供2种blueprint的扩展，简化注册与使用global MD-SAL RPC服务�
 
 </blueprint>
 ```
+
+rpc-service元素获得了指定接口（该接口注册在MD-SAL RpcProviderRegistry中）的RpcService实现，并在创建实例（id=fooRpcService）后注入到org.opendaylight.app.Bar实例中。
+
+## Routed RPCs
+
+routed-rpc-implementation扩展注册routed RpcService实现。
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+                 xmlns:odl="http://opendaylight.org/xmlns/blueprint/v1.0.0">
+
+  <bean id="fooRoutedRpcService" class="org.opendaylight.app.FooRoutedRpcServiceImpl">
+    <!-- constructor args -->
+  </bean>
+
+  <odl:routed-rpc-implementation id="fooRoutedRpcServiceReg" ref="fooRoutedRpcService"/>
+
+  <bean id="bar" class="org.opendaylight.app.Bar">
+    <argument ref="fooRoutedRpcServiceReg"/>
+  </bean>
+
+</blueprint>
+```
