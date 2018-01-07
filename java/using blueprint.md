@@ -1,11 +1,11 @@
 ODL buleprint 使用指引
 ====================
 
-Blueprint is an OSGi compendium spec for a dependency injection framework designed specifically for use in an OSGi container. It was derived from Spring DM and is very similar. Karaf includes the Apache Aries blueprint implementation with its base features.
+Blueprint是OSGi的依赖注入框架的规范，继承自Spring DM并与之非常相似，Karaf包含了Apache Aries blueprint实现。
 
-To use blueprint a bundle provides XML resource(s) that describe what OSGi service dependencies are needed, what Java objects to instantiate for the bundle's business logic and how to wire them together. In addition, a bundle can export/advertise its own OSGi services.
+使用blueprint时，bundle提供XML来描述：bundle需要的OSGi服务依赖，bundle业务逻辑需要实例化的Java对象，以及如何将Java对象与服务依赖进行联系。此外bundle还可以导出/通告自己的OSGi服务。
 
-There are 4 main elements in a blueprint xml file: bean, service, reference and reference-list:
+Blueprint XML文件中共有4个元素：bean，service，reference和reference-list：
 
 - bean - an element that describes a Java object to be instantiated given a class name and optional constructor args and properties.
 - service - advertises a bean as an OSGi service
